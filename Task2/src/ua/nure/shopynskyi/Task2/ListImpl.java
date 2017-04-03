@@ -1,17 +1,23 @@
 package ua.nure.shopynskyi.Task2;
 
-import java.lang.*;
-
 public class ListImpl implements List {
 
     private Object[] array;
     private int count;
+    private String exMessage = "Index was outside of the list";
 
     public ListImpl() {
         this.array = new Object[10];
     }
 
+    // Main method for the list tests
     public static void main(String[] args) {
+
+        // Declarations
+        String defResult = "~~~ Result: [D, E, F]";
+        String addAll = "~~~ list.addAll(list2)";
+
+        // Lists creating
         System.out.println("~~~ list A B C");
         System.out.println("~~~ Result: [A, B, C]");
         List list = new ListImpl();
@@ -20,15 +26,17 @@ public class ListImpl implements List {
         list.add("C");
         System.out.println(list);
 
+        // 1
         System.out.println("~~~ list2: D E F");
-        System.out.println("~~~ Result: [D, E, F]");
+        System.out.println(defResult);
         List list2 = new ListImpl();
         list2.add("D");
         list2.add("E");
         list2.add("F");
         System.out.println(list2);
 
-        System.out.println("~~~ list.addAll(list2)");
+        // Adding elements
+        System.out.println(addAll);
         System.out.println("~~~ Result: [A, B, C, D, E, F]");
         list.addAll(list2);
         System.out.println(list);
@@ -38,63 +46,82 @@ public class ListImpl implements List {
         list.add("C");
         System.out.println(list);
 
+        // List methods tests
         System.out.println("~~~ list.clear()");
         System.out.println("~~~ Result: []");
         list.clear();
         System.out.println(list);
 
-        System.out.println("~~~ list.addAll(list2)");
-        System.out.println("~~~ Result: [D, E, F]");
+        System.out.println(addAll);
+        System.out.println(defResult);
         list.addAll(list2);
         System.out.println(list);
 
+        // List contains methods
         System.out.println("~~~ list.contains(E)");
         System.out.println("~~~ Result: true");
         System.out.println(list.contains("E"));
 
-        System.out.println("~~~ list.contains(�)");
+        // 1
+        System.out.println("~~~ list.contains(С)");
         System.out.println("~~~ Result: false");
-        System.out.println(list.contains("C"));
+        System.out.println(list.contains("С"));
 
+        // 2
         System.out.println("~~~ list.indexOf(D)");
         System.out.println("~~~ Result: 0");
         System.out.println(list.indexOf("D"));
 
+        // 3
         System.out.println("~~~ list.get(2)");
         System.out.println("~~~ Result: F");
         System.out.println(list.get(2));
 
+        // 4
         System.out.println("~~~ list.indexOf(F)");
         System.out.println("~~~ Result: 2");
         System.out.println(list.indexOf("F"));
 
+        // 5
         System.out.println("~~~ list.size()");
         System.out.println("~~~ Result: 3");
         System.out.println(list.size());
 
+        // 6
         System.out.println("~~~ list");
-        System.out.println("~~~ Result: [D, E, F]");
+        System.out.println(defResult);
         System.out.println(list);
 
+        // List remove methods
         System.out.println("~~~ list.remove(1)");
         System.out.println("~~~ Result: [D, F]");
         list.remove(1);
         System.out.println(list);
 
+        // 7
         System.out.println("~~~ list.remove(F)");
         System.out.println("~~~ Result: [D]");
         list.remove("F");
         System.out.println(list);
 
+        // 8
         System.out.println("~~~ list.size()");
         System.out.println("~~~ Result: 1");
         System.out.println(list.size());
 
-        System.out.println("~~~ list.addAll(list2)");
+        // 9
+        System.out.println(addAll);
         System.out.println("~~~ Result: [D, D, E, F]");
         list.addAll(list2);
         System.out.println(list);
 
+        testIter(list, list2);
+    }
+
+    private static void testIter(List list, List list2) {
+        String itNext = "~~~ it.next()";
+
+        // 11
         System.out.println("~~~ foreach list");
         System.out.println("~~~ Result: D D E F");
         for (Object el : list) {
@@ -102,50 +129,61 @@ public class ListImpl implements List {
         }
         System.out.println();
 
+        // 12
         System.out.println("~~~ Iterator it = list.iterator()");
-        Iterator it = list.iterator();
+        ListIterator it = list.iterator();
 
+        // 13
         System.out.println("~~~ it.next()");
         System.out.println("~~~ Result: D");
         System.out.println(it.next());
 
-        System.out.println("~~~ it.next()");
+        // 14
+        System.out.println(itNext);
         System.out.println("~~~ Result: D");
         System.out.println(it.next());
 
+        // 15
         System.out.println("~~~ it.remove()");
         System.out.println("~~~ Result: [D, E, F]");
         it.remove();
         System.out.println(list);
 
-        System.out.println("~~~ it.next()");
+        // 16
+        System.out.println(itNext);
         System.out.println("~~~ Result: E");
         System.out.println(it.next());
 
+        // 17
         System.out.println("~~~ it.remove()");
         System.out.println("~~~ Result: [D, F]");
         it.remove();
         System.out.println(list);
 
-        System.out.println("~~~ it.next()");
+        // 18
+        System.out.println(itNext);
         System.out.println("~~~ Result: F");
         System.out.println(it.next());
 
+        // 19
         System.out.println("~~~ it.remove()");
         System.out.println("~~~ Result: [D]");
         it.remove();
         System.out.println(list);
 
+        // 20
         System.out.println("~~~ list.remove(D)");
         System.out.println("~~~ Result: []");
         list.remove("D");
         System.out.println(list);
 
+        // 21
         System.out.println("~~~ list.addAll(list2)");
         System.out.println("~~~ Result: [D, E, F]");
         list.addAll(list2);
         System.out.println(list);
 
+        // 22
         System.out.println("~~~ foreach list");
         System.out.println("~~~ Result: D E F ");
         for (Object el : list) {
@@ -165,19 +203,19 @@ public class ListImpl implements List {
 
     @Override
     public void addAll(List list) {
-        Object[] array = list.toArray();
+        Object[] arr = list.toArray();
 
-        for (Object obj : array) {
+        for (Object obj : arr) {
             this.add(obj);
         }
     }
 
     @Override
     public Object[] toArray() {
-        Object[] array = new Object[count];
-        System.arraycopy(this.array, 0, array, 0, count);
+        Object[] arr = new Object[count];
+        System.arraycopy(this.array, 0, arr, 0, count);
 
-        return array;
+        return arr;
     }
 
     @Override
@@ -195,12 +233,11 @@ public class ListImpl implements List {
     }
 
     @Override
-    public Object get(int index) throws IndexOutOfBoundsException {
+    public Object get(int index) {
         if (checkIndex(index)) {
             return this.array[index];
         } else {
-            throw new IndexOutOfBoundsException("Index was outside " +
-                    "of the list");
+            throw new IndexOutOfBoundsException(exMessage);
         }
     }
 
@@ -215,7 +252,7 @@ public class ListImpl implements List {
     }
 
     @Override
-    public Object remove(int j) throws IndexOutOfBoundsException {
+    public Object remove(int j) {
         if (checkIndex(j)) {
             Object deleted = this.array[j];
             System.arraycopy(this.array, j + 1, this.array, j,
@@ -224,8 +261,7 @@ public class ListImpl implements List {
 
             return deleted;
         } else {
-            throw new IndexOutOfBoundsException("Index was outside " +
-                    "of the list");
+            throw new IndexOutOfBoundsException(exMessage);
         }
     }
 
@@ -247,46 +283,49 @@ public class ListImpl implements List {
 
     @Override
     public String toString() {
-        String result = "[";
+        StringBuilder result = new StringBuilder();
+        result.append("[");
 
         if (this.count > 0) {
-            result += this.array[0].toString();
+            result.append(this.array[0].toString());
 
             for (int i = 1; i < this.count; i++) {
-                result += ", " + this.array[i].toString();
+                result.append(", ");
+                result.append(this.array[i].toString());
             }
         }
 
-        return result + "]";
+        result.append("]");
+
+
+        return result.toString();
     }
 
     @Override
-    public Iterator iterator() {
+    public ListIterator iterator() {
         return new Itr();
     }
 
-    private class Itr implements Iterator {
-        int cursor;
+    private class Itr implements ListIterator {
+        private int cursor;
 
         public boolean hasNext() {
             return cursor != ListImpl.this.count;
         }
 
-        public Object next() throws IndexOutOfBoundsException {
+        public Object next() {
             if (cursor < ListImpl.this.count) {
                 return ListImpl.this.array[cursor++];
             } else {
-                throw new IndexOutOfBoundsException("Index was outside " +
-                        "of the list");
+                throw new IllegalStateException(exMessage);
             }
         }
 
-        public void remove() throws IndexOutOfBoundsException {
+        public void remove() {
             if (cursor > 0) {
                 ListImpl.this.remove(--cursor);
             } else {
-                throw new IndexOutOfBoundsException("Index was outside " +
-                        "of the list");
+                throw new IllegalStateException(exMessage);
             }
         }
     }

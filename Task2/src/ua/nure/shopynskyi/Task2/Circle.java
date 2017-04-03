@@ -45,11 +45,11 @@ public class Circle {
     }
 
     public boolean isInside(double x, double y) {
-        return getDistance(this.x, this.y, x, y) <= this.r;
+        return getDistance(this.x, this.y, x, y) < this.r;
     }
 
     public boolean isInside(Circle c) {
-        return getDistance(this.x, this.y, c.x, c.y) <= this.r - c.r;
+        return getDistance(this.x, this.y, c.x, c.y) < this.r - c.r;
     }
 
     public void print() {
@@ -65,8 +65,7 @@ public class Circle {
 
     @Override
     public String toString() {
-        return "Circle (" + this.x + ", " +
-                this.y + ", " + this.r + ")";
+        return String.format("Circle (%s, %s, %s)", this.x, this.y, this.r);
     }
 
 }

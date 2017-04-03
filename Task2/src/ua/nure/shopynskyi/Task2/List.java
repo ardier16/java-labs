@@ -37,6 +37,6 @@ public interface List extends java.lang.Iterable<Object> {
 	// Returns the number of elements in this list
 	int size();
 
-	Iterator iterator();
+	ListIterator iterator();
 
 }
